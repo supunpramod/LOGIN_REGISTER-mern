@@ -2,6 +2,7 @@
 import React from "react"
 import { useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Link } from "react-router-dom"
 
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -63,11 +64,12 @@ export default function RegistrationForm() {
             <button type="submit" className="btn btn-success w-100 mb-3">
               Register
             </button>
+            </form>
             <div className="text-center mb-3">Already Have an Account</div>
-            <button type="button" className="btn btn-outline-secondary w-100">
+            <Link to="/login" className="btn btn-outline-secondary w-100">
               Login
-            </button>
-          </form>
+            </Link>
+          
         </div>
       </div>
     </div>
