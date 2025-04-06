@@ -3,13 +3,22 @@ import React from "react"
 import { useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 export default function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  })
+    const[name,setName]=useState()
+    const[email,setEmail]=useState()
+    const[password,setPassword]=useState()
+
+
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        axios.post('',{name,email,password})
+        .then(result=>console.log(result))
+        .catch(err=>console.log(err))
+        
+    }
+
 
   
 
@@ -18,7 +27,7 @@ export default function RegistrationForm() {
       <div className="card" style={{ width: "400px" }}>
         <div className="card-body p-4">
           <h2 className="card-title text-center mb-4">Register</h2>
-          <form>
+          <form onSubmit={handleSubmit} >      
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
                 Name
@@ -30,6 +39,7 @@ export default function RegistrationForm() {
                 name="name"
                 placeholder="Enter Name"
                 autoComplete="off"
+                onChange={(e) => setName(e.target.value)}
               
               />
             </div>
@@ -44,6 +54,7 @@ export default function RegistrationForm() {
                 name="email"
                 placeholder="Enter Email"
                 autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
                
               />
             </div>
@@ -58,6 +69,7 @@ export default function RegistrationForm() {
                 name="password"
                 placeholder="Enter Password"
                 autoComplete="off"
+                onChange={(e) => setPassword(e.target.value)}
                 
               />
             </div>
